@@ -17,9 +17,6 @@ echo UPDATING COMPLETED
 echo INSTALLING docker docker-ce=18
 sudo apt-get install -y docker.io
 
-sudo groupadd docker
-sudo usermod -aG docker $USER
-
 # check the status of docker
 systemctl is-active --quiet docker
 if [ $? -eq 0 ]; then
@@ -45,3 +42,7 @@ sudo apt-mark hold kubelet kubeadm kubectl
 
 echo "net.bridge.bridge-nf-call-iptables=1" | sudo tee -a /etc/sysctl.conf
 sudo sysctl -p
+
+sudo groupadd docker
+sudo usermod -aG docker $USER
+sudo systemctl enable docker
