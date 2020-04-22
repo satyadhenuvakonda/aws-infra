@@ -1,9 +1,5 @@
 
 k8s-key
 k8s-key.pub
-terraform.tfvars
-terraform.tfstate
-terraform.tfstate.backup
 lock.json
-terraform.tfstate.*
 terraform*
