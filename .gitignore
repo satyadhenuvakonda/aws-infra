@@ -1,0 +1,6 @@
+
+k8s-key
+k8s-key.pub
+terraform.tfvars
+terraform.tfstate
+terraform.tfstate.backup
