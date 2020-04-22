@@ -17,6 +17,9 @@ echo UPDATING COMPLETED
 echo INSTALLING docker docker-ce=18
 sudo apt-get install -y docker.io
 
+sudo groupadd docker
+sudo usermod -aG docker $USER
+
 # check the status of docker
 systemctl is-active --quiet docker
 if [ $? -eq 0 ]; then
