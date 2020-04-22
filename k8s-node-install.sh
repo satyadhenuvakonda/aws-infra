@@ -15,10 +15,7 @@ sudo apt-get update
 echo UPDATING COMPLETED
 
 echo INSTALLING docker docker-ce=18
-sudo apt-get install -y docker-ce docker-ce-cli containerd.io
-
-echo Hold Docker at this specific version
-sudo apt-mark hold docker-ce
+sudo apt-get install -y docker.io
 
 # check the status of docker
 systemctl is-active --quiet docker
