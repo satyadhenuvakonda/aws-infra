@@ -10,10 +10,14 @@ $(lsb_release -cs) \
 stable"
 
 # This update will add the localrepo
+echo UPDATING SYSTEM
 sudo apt-get update
-# Installing docker docker-ce=18
+echo UPDATING COMPLETED
+
+echo INSTALLING docker docker-ce=18
 sudo apt-get install -y docker-ce=18.06.1~ce~3-0~ubuntu
-# Hold Docker at this specific version:
+
+echo Hold Docker at this specific version
 sudo apt-mark hold docker-ce
 
 # check the status of docker
