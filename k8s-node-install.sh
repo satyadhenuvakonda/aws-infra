@@ -1,28 +1,33 @@
 #! /bin/sh
 
-user=ansible;export user;
-usermod  -l $user ubuntu
-groupmod -n $user ubuntu
-usermod  -d /home/$user -m $user
-echo "$user ALL=(ALL) NOPASSWD:ALL" | sudo tee -a /etc/sudoers
-rm -rf /etc/sudoers.d/* || status=$?
+# user=ansible;export user;
+# usermod  -l $user ubuntu
+# groupmod -n $user ubuntu
+# usermod  -d /home/$user -m $user
+# echo "$user ALL=(ALL) NOPASSWD:ALL" | sudo tee -a /etc/sudoers
+# rm -rf /etc/sudoers.d/* || status=$?
 
+###########################################
 # Add the Docker GPG key:
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+# curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 
-# Add the Docker repository:
-sudo add-apt-repository \
-"deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-$(lsb_release -cs) \
-stable"
+# # Add the Docker repository:
+# sudo add-apt-repository \
+# "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+# $(lsb_release -cs) \
+# stable"
 
-# This update will add the localrepo
-echo UPDATING SYSTEM
-sudo apt-get update
-echo UPDATING COMPLETED
+# # This update will add the localrepo
+# echo UPDATING SYSTEM
+# sudo apt-get update
+# echo UPDATING COMPLETED
 
-echo INSTALLING docker docker-ce=18
-sudo apt-get install -y docker.io
+# echo INSTALLING docker docker-ce=18
+# sudo apt-get install -y docker.io
+########################################################
+
+curl -fsSL https://get.docker.com -o get-docker.sh
+sh get-docker.sh
 
 # check the status of docker
 systemctl is-active --quiet docker
@@ -54,3 +59,5 @@ sudo sysctl -p
 # sudo usermod -aG docker $USER
 # sudo systemctl enable docker
 # sudo reboot
+
+sudo logout
