@@ -1,5 +1,12 @@
 #! /bin/sh
 
+user=ansible;export user;
+usermod  -l $user ubuntu
+groupmod -n $user ubuntu
+usermod  -d /home/$user -m $user
+echo "$user ALL=(ALL) NOPASSWD:ALL" | sudo tee -a /etc/sudoers
+rm -rf /etc/sudoers.d/* || status=$?
+
 # Add the Docker GPG key:
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 
@@ -43,7 +50,7 @@ sudo apt-mark hold kubelet kubeadm kubectl
 echo "net.bridge.bridge-nf-call-iptables=1" | sudo tee -a /etc/sysctl.conf
 sudo sysctl -p
 
-sudo groupadd docker
-sudo usermod -aG docker $USER
-sudo systemctl enable docker
+# sudo groupadd docker
+# sudo usermod -aG docker $USER
+# sudo systemctl enable docker
 # sudo reboot
