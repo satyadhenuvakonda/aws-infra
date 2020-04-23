@@ -127,8 +127,6 @@ resource "aws_route_table_association" "k8s-public-3-a" {
   route_table_id = aws_route_table.k8s-public.id
 }
 
-
-
 # SECURITY GROUP 
 
 resource "aws_security_group" "allow-ssh" {
@@ -165,8 +163,43 @@ resource "aws_security_group" "allow-ssh" {
   }
 
     ingress {
+    from_port   = 10252
+    to_port     = 10252
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+    ingress {
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  
+    ingress {
     from_port   = 8080
     to_port     = 8080
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+    ingress {
+    from_port   = 6443
+    to_port     = 6443
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+    ingress {
+    from_port   = 2379
+    to_port     = 2380
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+    ingress {
+    from_port   = 30000
+    to_port     = 32767
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }

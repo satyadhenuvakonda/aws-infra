@@ -1,5 +1,5 @@
 #! /bin/sh
-
+sudo su -
 # user=ansible;export user;
 # usermod  -l $user ubuntu
 # groupmod -n $user ubuntu
