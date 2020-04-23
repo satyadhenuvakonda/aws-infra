@@ -56,7 +56,7 @@ echo "net.bridge.bridge-nf-call-iptables=1" | sudo tee -a /etc/sysctl.conf
 sudo sysctl -p
 
 # sudo groupadd docker
-# sudo usermod -aG docker $USER
+sudo usermod -aG docker ubuntu
 # sudo systemctl enable docker
 # sudo reboot
 
