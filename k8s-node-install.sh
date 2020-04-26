@@ -1,5 +1,5 @@
 #! /bin/sh
-sudo su -
+
 # user=ansible;export user;
 # usermod  -l $user ubuntu
 # groupmod -n $user ubuntu
@@ -60,4 +60,4 @@ sudo usermod -aG docker ubuntu
 # sudo systemctl enable docker
 # sudo reboot
 
-sudo logout
+sudo exit
